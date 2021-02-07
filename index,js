@@ -1,0 +1,19 @@
+const RPC = require('discord-rpc');
+const client = new RPC.Client({ transport: 'ipc' });
+client.on('ready', () =>
+{
+    client.request('SET_ACTIVITY', {
+        pid: process.pid,
+        activity: {
+            assets: {
+                large_image: 'servericon'
+            },
+            details: '1K AMONG US SERVER',
+            buttons: [
+                { label: "Let Me In!", url: 'https://discord.gg/aFnmE5Ed9b' }
+            ]
+        }
+    });
+    console.log('started!');
+});
+client.login({ clientId: '796486842429603841' });
